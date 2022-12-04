@@ -12,7 +12,6 @@ const privateKey = process.env.privateKey;
 exports.signTransaction = async(req, res) => {
   
     try {
-       
         const path = req.file.path
         let {userAddress } = req.body
         const signed_message = await SignatureService.sign_auth_message(publicKey, privateKey);
@@ -84,7 +83,8 @@ exports.signTransaction = async(req, res) => {
             data: {
                 userAddress: userAddress,
                 cId : response.data.Hash ,
-                ipfsLink: ipfsLink
+                ipfsLink: ipfsLink,
+                signed_message:signed_message
             }
 
         })
