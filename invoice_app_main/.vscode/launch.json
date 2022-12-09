@@ -5,9 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "invoice",
+            "name": "Invoice",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "deviceId": "chrome",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-port",
+                "8080"
+            ],
         },
         {
             "name": "invoice (profile mode)",

@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:invoice/constants.dart';
 import 'package:invoice/routes/app_pages.dart';
 import 'package:invoice/upload/upload_controller.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:html' as html;
 
 class UploadView extends GetView<UploadController> {
   const UploadView({super.key});
@@ -32,6 +34,10 @@ class UploadView extends GetView<UploadController> {
                 onPressed: () => controller.pickFiles(),
                 child: const Text('Pick Files'),
               ),
+              ElevatedButton(
+                onPressed: () => _launchURL(),
+                child: const Text('Connect World Coin'),
+              ),
               // ElevatedButton(
               //   onPressed: () => Get.toNamed(Routes.invoiceEntries,
               //       id: Constants.invoiceHomeId),
@@ -43,5 +49,15 @@ class UploadView extends GetView<UploadController> {
         ),
       ),
     );
+  }
+
+  _launchURL() async {
+    const url = 'world_coin_index.html';
+    html.window.open('http://localhost:8080/' + url, '_blank');
+    // if (await canLaunchUrl(Uri(path: 'http://localhost:8080/' + url))) {
+    //   await launchUrl(Uri(path: 'http://localhost:8080/' + url));
+    // } else {
+    //   throw 'Could not launch $url';
+    // }
   }
 }
